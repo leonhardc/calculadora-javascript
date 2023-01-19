@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="icon" type="img/svg" href="./assets/img/calculator-fill.svg">
+    <title>Calculadora</title>
+</head>
+<body class="bg-secondary">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6 bg-light">
+            <h2 class="text-center pb-2">Calculadora Simples</h2>
+            <div class="row">
+                <input type="text" class="fw-bold text-end" name="" id="label">
+            </div>
+            <div class="row my-2">
+                <div class="col">
+                    <div class="row">
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-danger fw-bold" onclick="limpaInput()">C</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-secondary fw-bold">+/-</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-secondary fw-bold">%</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-warning fw-bold" onclick="insereOperador('/')">/</button>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <div class="row">
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(7)">7</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(8)">8</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(9)">9</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-warning fw-bold" onclick="insereOperador('*')">x</button>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+                </div>
+            </div>            
+            <div class="row mb-2">
+                <div class="col">
+                    <div class="row">
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(4)">4</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(5)">5</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(6)">6</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-warning fw-bold" onclick="insereOperador('-')">-</button>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <div class="row">
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(1)">1</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(2)">2</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(3)">3</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-warning fw-bold" onclick="insereOperador('+')">+</button>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-6 ms-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold" onclick="insereNumero(0)">0</button>
+                            </div>
+                        </div>                                               
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-light text-secondary fw-bold">,</button>
+                            </div>
+                        </div>                        
+                        <div class="col mx-1">
+                            <div class="row">
+                                <button class="btn btn-success fw-bold" onclick="solve()">=</button>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+                </div>
+            </div>
+        
+        </div>
+        <div class="col"></div>
+    </div>
+    <script>
+        const MAX_LENGTH = 20
+        
+        function insereNumero(num){
+            var label = window.document.getElementById("label")
+            if(label.value.length <= MAX_LENGTH){
+                label.value += num
+            }
+        }
+
+        function insereOperador(op){
+            var label = window.document.getElementById("label")
+             if(label.value !== "" && label.value.length <= MAX_LENGTH){
+                
+                if(
+                    label.value[label.value.length-1] !== '/' &&
+                    label.value[label.value.length-1] !== 'x' &&
+                    label.value[label.value.length-1] !== '+' &&
+                    label.value[label.value.length-1] !== '-'
+                ){
+                    label.value += op
+                }
+
+             }
+        }
+
+        function limpaInput(){
+            var label = window.document.getElementById("label")
+            label.value = ""
+        }
+
+        function solve(){
+            var label = window.document.getElementById("label")
+            var operation = label.value.split("+")
+            window.alert(operation)
+        }
+    </script>
+</body>
+</html>

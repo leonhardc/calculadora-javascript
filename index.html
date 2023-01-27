@@ -212,10 +212,13 @@
                                 label.value = result.toString() + '+'
                             }
                             else{
-                                result = result.toString()
-                                lenDecimal = result.split('.')[]
+                                let resultStr = result.toString()
+                                let lenDecimal = resultStr.split('.')[1].length
+                                if(lenDecimal > 4){
+                                    lenDecimal = 4
+                                }
+                                label.value = result.toFixed(lenDecimal).toString() + '+'
                             }
-                            label.value = ().toString() + '+'
                         }
                     }
                     else if(label.value.indexOf('-') != -1){
@@ -226,7 +229,18 @@
                             label.value = "Erro"
                         }
                         else{
-                            label.value = (Number(listValues[0]) - Number(listValues[1])).toString() + '-'
+                            let result = Number(listValues[0]) - Number(listValues[1])
+                            if(Number.isInteger(result)){
+                                label.value = result.toString() + '-'
+                            }
+                            else{
+                                let resultStr = result.toString()
+                                let lenDecimal = resultStr.split('.')[1].length
+                                if(lenDecimal > 4){
+                                    lenDecimal = 4
+                                }
+                                label.value = result.toFixed(lenDecimal).toString() + '-'
+                            }
                         }
                     }
                     else if(label.value.indexOf('*') != -1){
@@ -237,7 +251,18 @@
                             label.value = "Erro"
                         }
                         else{
-                            label.value = (Number(listValues[0]) * Number(listValues[1])).toString() + '*'
+                            let result = Number(listValues[0]) * Number(listValues[1])
+                            if(Number.isInteger(result)){
+                                label.value = result.toString() + '*'
+                            }
+                            else{
+                                let resultStr = result.toString()
+                                let lenDecimal = resultStr.split('.')[1].length
+                                if(lenDecimal > 4){
+                                    lenDecimal = 4
+                                }
+                                label.value = result.toFixed(lenDecimal).toString() + '*'
+                            }
                         }
                     }
                     else if(label.value.indexOf('/') != -1){
@@ -252,7 +277,18 @@
                                 label.value = "Erro. Não permitido divisão por zero"
                             }
                             else{
-                                label.value = (Number(listValues[0]) / Number(listValues[1])).toString() + '/'
+                                let result = Number(listValues[0]) / Number(listValues[1])
+                                if(Number.isInteger(result)){
+                                    label.value = result.toString() + '/'
+                                }
+                                else{
+                                    let resultStr = result.toString()
+                                    let lenDecimal = resultStr.split('.')[1].length
+                                    if(lenDecimal > 4){
+                                        lenDecimal = 4
+                                    }
+                                    label.value = result.toFixed(lenDecimal).toString() + '/'
+                                }
                             }
                         }
                     }
@@ -271,49 +307,98 @@
         }
 
         /* Calcular a operação no input */ 
+        
         function solve(){
             var label = window.document.getElementById("label")
             
             if(label.value.indexOf('+') != -1){
+                /* Operação de soma */ 
                 let listValues = label.value.split('+')
 
                 if( listValues.length > 2){
                     label.value = "Erro"
                 }
                 else{
-                    label.value = Number(listValues[0]) + Number(listValues[1])
+                    let result = Number(listValues[0]) + Number(listValues[1])
+                    if(Number.isInteger(result)){
+                        label.value = result.toString()
+                    }
+                    else{
+                        let resultStr = result.toString()
+                        let lenDecimal = resultStr.split('.')[1].length
+                        if(lenDecimal > 4){
+                            lenDecimal = 4
+                        }
+                        label.value = result.toFixed(lenDecimal).toString()
+                    }
                 }
             }
 
             else if(label.value.indexOf('-') != -1){
+                /* Operação de subtração */ 
                 let listValues = label.value.split('-')
                 if( listValues.length > 2){
                     label.value = "Erro"
                 }
                 else{
-                    label.value = Number(listValues[0]) - Number(listValues[1]) 
+                    let result = Number(listValues[0]) - Number(listValues[1])
+                    if(Number.isInteger(result)){
+                        label.value = result.toString()
+                    }
+                    else{
+                        let resultStr = result.toString()
+                        let lenDecimal = resultStr.split('.')[1].length
+                        if(lenDecimal > 4){
+                            lenDecimal = 4
+                        }
+                        label.value = result.toFixed(lenDecimal).toString()
+                    }
                 }
             }
 
             else if(label.value.indexOf('*') != -1){
+                /* Operação de multiplicação */ 
                 let listValues = label.value.split('*')
 
                 if( listValues.length > 2){
                     label.value = "Erro"
                 }
                 else{
-                    label.value = Number(listValues[0]) * Number(listValues[1])
+                    let result = Number(listValues[0]) * Number(listValues[1])
+                    if(Number.isInteger(result)){
+                        label.value = result.toString()
+                    }
+                    else{
+                        let resultStr = result.toString()
+                        let lenDecimal = resultStr.split('.')[1].length
+                        if(lenDecimal > 4){
+                            lenDecimal = 4
+                        }
+                        label.value = result.toFixed(lenDecimal).toString()
+                    }
                 }
             }
 
             else if(label.value.indexOf('/') != -1){
+                /* Operação de divisão */ 
                 let listValues = label.value.split('/')
 
                 if( listValues.length > 2){
                     label.value = "Erro"
                 }
                 else{
-                    label.value = Number(listValues[0]) / Number(listValues[1])
+                    let result = Number(listValues[0]) / Number(listValues[1])
+                    if(Number.isInteger(result)){
+                        label.value = result.toString()
+                    }
+                    else{
+                        let resultStr = result.toString()
+                        let lenDecimal = resultStr.split('.')[1].length
+                        if(lenDecimal > 4){
+                            lenDecimal = 4
+                        }
+                        label.value = result.toFixed(lenDecimal).toString()
+                    }
                 }
             }
         }

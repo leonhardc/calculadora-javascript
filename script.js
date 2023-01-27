@@ -62,7 +62,7 @@ function solve(operation){
         /* O operador é '-' ? */
         
         if(operation[menor] == '-'){
-            if(operation[0] == '-')
+            if(operation[0] == '-'){}
             let pEsqueda = operation.slice(0, menor)
             let pDireita =  operation.slice(menor+1)
 
